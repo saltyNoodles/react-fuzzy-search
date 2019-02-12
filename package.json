@@ -9,14 +9,14 @@
   "license": "MIT",
   "scripts": {
     "prepublish": ". ./.scripts/prepublish.sh",
+    "preinstall": "npm run prepublish",
     "lint": "eslint src",
     "lintfix": "eslint src --fix",
     "testonly": "mocha --require .scripts/mocha_runner src/**/tests/**/*.js",
     "test": "npm run lint && npm run testonly",
     "test-watch": "npm run testonly -- --watch --watch-extensions js",
     "storybook": "start-storybook -p 9010",
-    "publish-storybook": "bash .scripts/publish_storybook.sh",
-    "postinstall": "npm run prepublish"
+    "publish-storybook": "bash .scripts/publish_storybook.sh"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
