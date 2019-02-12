@@ -56,7 +56,7 @@ function defaultResultsTemplate(props, state, styl, clickHandler) {
   return state.results.map((val, i) => {
     const style = state.selectedIndex === i ? styl.selectedResultStyle : styl.resultsStyle;
     return (
-      <div key={i} style={style} onClick={() => clickHandler(i)}>
+      <div key={i} className="search-result" onClick={() => clickHandler(i)}>
         {val.title}
       </div>
     );
@@ -212,10 +212,9 @@ export default class FuzzySearch extends Component {
 
     return (
       <div className={mainClass} style={{ width }} onKeyDown={this.handleKeyDown}>
-        <div style={styles.searchBoxWrapper}>
+        <div className="search-box">
           <input
             type="text"
-            style={styles.searchBoxStyle}
             onChange={this.handleChange}
             placeholder={placeholder}
             autoFocus={autoFocus}
@@ -224,8 +223,8 @@ export default class FuzzySearch extends Component {
         </div>
         {this.state.results &&
           this.state.results.length > 0 &&
-          <div style={styles.resultsWrapperStyle}>
-            {resultsTemplate(this.props, this.state, styles, this.handleMouseClick)}
+          <div className="search-results">
+            {resultsTemplate(this.props, this.state, {}, this.handleMouseClick)}
           </div>}
       </div>
     );
